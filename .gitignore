@@ -1,0 +1,11 @@
+# Ignore the entire virtual environment folder
+ollamarag/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Ignore build folders
+build/
+dist/
+*.egg-info/

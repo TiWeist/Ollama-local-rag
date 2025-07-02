@@ -12,7 +12,7 @@ YELLOW = '\033[93m'
 NEON_GREEN = '\033[92m'
 RESET_COLOR = '\033[0m'
 
-def get_relevant_context(rewritten_input, vault_embeddings, vault_content, top_k=3):
+def get_relevant_context(rewritten_input, vault_embeddings, vault_content, top_k=10):
     if vault_embeddings.nelement() == 0:
         return []
     input_embedding = ollama.embeddings(model='mxbai-embed-large', prompt=rewritten_input)["embedding"]
@@ -88,7 +88,7 @@ def ollama_chat(user_input, system_message, vault_embeddings, vault_content, oll
 # Parse command-line arguments
 print(NEON_GREEN + "Parsing command-line arguments..." + RESET_COLOR)
 parser = argparse.ArgumentParser(description="Ollama Chat")
-parser.add_argument("--model", default="llama3", help="Ollama model to use (default: llama3)")
+parser.add_argument("--model", default="llama3.1:8b", help="Ollama model to use (default: llama3)")
 args = parser.parse_args()
 
 print(NEON_GREEN + "Initializing Ollama API client..." + RESET_COLOR)
